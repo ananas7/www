@@ -2,7 +2,7 @@
 	mysql_connect("localhost","root","");
 	mysql_select_db("ananas");
 	mysql_set_charset('utf8');
-	$number_div = 0;
+	$number_div = $_POST['number_div'];
 	if (!preg_match('/^[0-9]{1,9}$/', $number_div) || ($_SESSION['hidden'] != $_POST['hidden'])) { 
 		die;
 	}

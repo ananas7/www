@@ -1,8 +1,5 @@
 var count = 0;
 $ (function () {
-function ShowResults(value, index, ar) {
-    $('#message_box') = $('<span class="name">' . value.name . '	' . value.time . '</span> <div>' . value.message . '</div>').prop('outerHTML');
-}
 	function add_all_message() {
 		$.ajax(
 		{
@@ -12,8 +9,12 @@ function ShowResults(value, index, ar) {
 			dataType: 'json',
 			success: function (result)
 			{
-				result.forEach(ShowResults)
-				count += result.count();
+				$("#message_box").html(function (index, oldhtml) {
+					result.forEach(function (mes){
+						oldhtml += '<span class="name">' + mes.name + '	' + mes.time + '</span><div>' + mes.message + '</div>';
+					});
+				return oldhtml; });
+				count += result.count;
 			}
 		 });	
 	 }
