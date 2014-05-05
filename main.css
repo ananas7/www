@@ -25,7 +25,7 @@
 	height: 480px;
 	width: 800px;
 	background-color: #ededed;
-	overflow-y: scroll;
+	overflow: scroll;
 	overflow-x: hidden;  
 }
 .name {

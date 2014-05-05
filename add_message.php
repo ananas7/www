@@ -3,8 +3,7 @@
 	mysql_connect("localhost","root","");
 	mysql_select_db("ananas");
 	mysql_set_charset('utf8');
-	if ($_SESSION['hidden'] != $_POST['hidden'])
-		die;
+	
 	if(($_SESSION['log_or_exit'] == "exit") && ($_POST['msgtext'] != "")){
 		$mes = array(
 			"message" => $_POST['msgtext'],
