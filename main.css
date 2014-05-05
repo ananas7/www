@@ -1,0 +1,36 @@
+.leftimg {
+	float:left;
+	margin: 7px 7px 7px 0;
+}
+.rightimg  {
+	float: right;
+	margin: 7px 0 7px 7px;
+}
+.centrimg  {
+	float: centr;
+	margin: 7px;
+}
+.inner {
+	margin-left: -400px;
+	width: 800px; 
+}
+.outer {
+	margin-left: 50%;
+	width: 50%;
+}
+.form-8 input{
+	margin: 0 0 8px 0;
+}
+.massage-div {
+	height: 480px;
+	width: 800px;
+	background-color: #ededed;
+	overflow-y: scroll;
+	overflow-x: hidden;  
+}
+.name {
+	font-style: italic;
+}
+.every_message {
+	white-space: normal;
+}
