@@ -35,7 +35,7 @@ $(function () {
 		{
 			url: 'add_message.php',
 			type: 'POST',
-			data:{msgtext: $('#mes').val(),},
+			data:{msgtext: $('#mes').val(), hid: $('#block').val(),},
 			dataType: 'json',
 			success: function (result)
 			{	
