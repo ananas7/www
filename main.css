@@ -34,3 +34,7 @@
 .every_message {
 	white-space: normal;
 }
+.for_text{
+	width: 800px;
+	display: block;
+}

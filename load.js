@@ -1,6 +1,14 @@
 var count = 0;
 var flag = true;
-$ (function () {
+$(function () {
+	function escapeHtml(text) {
+	  return text
+		  .replace(/&/g, "&amp;")
+		  .replace(/</g, "&lt;")
+		  .replace(/>/g, "&gt;")
+		  .replace(/"/g, "&quot;")
+		  .replace(/'/g, "&#039;");
+	}
 	function show_message() {		
 		$.ajax(
 		{
@@ -13,7 +21,7 @@ $ (function () {
 				if(result.length > 0) {
 					$("#message_box").html(function (index, oldhtml) {
 						result.forEach(function (mes){
-							oldhtml += '<span class="name">' + mes.name + '	' + mes.time + '</span><div>' + mes.message + '</div>';
+							oldhtml += '<span class="name">' + mes.name + '	' + mes.time + '</span><div><p>' + escapeHtml(mes.message) + '</p></div>';
 						});
 					return oldhtml; });
 					count += result.length;
@@ -35,8 +43,7 @@ $ (function () {
 			}
 		});
 	};
-	$('#mes').keydown(function(event)
-    {
+	$('#mes').keydown(function(event) {
         if (event.which == 13 && !event.shiftKey)
         {
 			event.preventDefault();
