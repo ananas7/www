@@ -37,4 +37,9 @@
 .for_text{
 	width: 800px;
 	display: block;
+	resize: vertical;
+}
+.my_name {
+	font-style: italic;
+	text-align: right;
 }

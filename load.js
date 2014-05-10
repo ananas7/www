@@ -21,7 +21,10 @@ $(function () {
 				if(result.length > 0) {
 					$("#message_box").html(function (index, oldhtml) {
 						result.forEach(function (mes){
-							oldhtml += '<span class="name">' + mes.name + '	' + mes.time + '</span><div><p>' + escapeHtml(mes.message) + '</p></div>';
+							if(mes.name == $("#my_name").val())
+								oldhtml += '<div class="my_name">' + mes.name + '	' + mes.time + '</div><div style="text-align: right"><p>' + escapeHtml(mes.message) + '</p></div>';
+							else
+								oldhtml += '<div class="name">' + mes.name + '	' + mes.time + '</div><div><p>' + escapeHtml(mes.message) + '</p></div>';
 						});
 					return oldhtml; });
 					count += result.length;
