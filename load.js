@@ -18,22 +18,26 @@ $(function () {
 			dataType: 'json',
 			success: function (result)
 			{	
+				
 				if(result.length > 0) {
 					$("#message_box").html(function (index, oldhtml) {
-						result.forEach(function (mes){
-							if(mes.name == $("#my_name").val())
-								oldhtml += '<div class="my_name">' + mes.name + '	' + mes.time + '</div><div style="text-align: right"><p>' + escapeHtml(mes.message) + '</p></div>';
-							else
-								oldhtml += '<div class="name">' + mes.name + '	' + mes.time + '</div><div><p>' + escapeHtml(mes.message) + '</p></div>';
-						});
+							result.forEach(function (mes){
+								if(mes.name == $("#my_name").val()) 
+									oldhtml += '<div class="my_name">' + mes.name + '	' + mes.time + 
+									'</div><div style="text-align: right" class="message"><p>' + escapeHtml(mes.message) + '</p></div>';
+								else
+									oldhtml += '<div class="name">' + mes.name + '	' + mes.time + '</div><div class="message"><p>' 
+									+ escapeHtml(mes.message) + '</p></div>';
+							});
 					return oldhtml; });
 					count += result.length;
-					document.getElementById('message_box').scrollTop = 9999;
+					document.getElementById('message_box').scrollTop = 9999*count;
 				}
 			}
 		});
 	}
 	function add_message () {
+		flag=false;
 		$.ajax(
 		{
 			url: 'add_message.php',
@@ -42,6 +46,7 @@ $(function () {
 			dataType: 'json',
 			success: function (result)
 			{	
+				flag=true;
 				$('#mes').val('');
 			}
 		});

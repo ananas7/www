@@ -30,6 +30,7 @@
 }
 .name {
 	font-style: italic;
+	width: 780px;
 }
 .every_message {
 	white-space: normal;
@@ -42,4 +43,11 @@
 .my_name {
 	font-style: italic;
 	text-align: right;
+	width: 780px;
+}
+.message {
+	/* background-color: #B0C4DE; */
+	/* color: #33527B; */
+	border-radius: 25px;
+	width: 780px;
 }
