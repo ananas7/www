@@ -22,10 +22,11 @@
 	mysql_select_db("ananas");
 	mysql_set_charset('utf8');
 	if (isset($_POST['p2'])) {
-		
 		$_SESSION['log_or_exit'] = "log";
 	}
 	if(isset($_POST['login'])){
+		$_POST['login']=mysql_real_escape_string($_POST['login']);
+		$_POST['password']=mysql_real_escape_string($_POST['password']);
 		$res = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE name='{$_POST['login']}' AND password='{$_POST['password']}'"));
 		if ($res) {
 			$_SESSION['login'] = $res['name'];
@@ -34,14 +35,6 @@
 		else {
 			$_SESSION['log_or_exit'] = "log";
 		}
-	}
-	if(isset($_POST['send']) && ($_SESSION['log_or_exit'] == "exit") && ($_POST['message'] != "")){
-		$message = $_POST['message'];
-		$time = date('Y-m-d H:i:s');
-		$name = $_SESSION['login'];
-		header('Location: http://ananas.ru');
-		$q = "INSERT INTO `message_chat` (`time`, `message`, `name`) VALUES ('$time', '$message', '$name')";
-		$result = mysql_query($q) or die(mysql_error());
 	}
 	function show_main(){
 		$main = file_get_contents("main.htm");

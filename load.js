@@ -14,7 +14,7 @@ $(function () {
 		{
 			url: 'show_message.php',
 			type: 'POST',
-			data:{number_div: count,},
+			data:{number_div: count, hidden: $('#block').val(),},
 			dataType: 'json',
 			success: function (result)
 			{	
@@ -37,16 +37,14 @@ $(function () {
 		});
 	}
 	function add_message () {
-		flag=false;
 		$.ajax(
 		{
 			url: 'add_message.php',
 			type: 'POST',
-			data:{msgtext: $('#mes').val(), hid: $('#block').val(),},
+			data:{msgtext: $('#mes').val(), hidden: $('#block').val(),},
 			dataType: 'json',
 			success: function (result)
 			{	
-				flag=true;
 				$('#mes').val('');
 			}
 		});
