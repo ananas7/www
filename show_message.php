@@ -9,7 +9,7 @@
 		die;
 	}
 	$sel_result = mysql_query("
-		SELECT `time`, `name`, `message`
+		SELECT `id`, `time`, `name`, `message`
 		FROM `message_chat`
 		LIMIT " . $number_div . ', 1000000'
 	);

@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	$_SESSION['log_or_exit'] = "log";
 	function template($name, $repl) {
 		$text = file_get_contents($name . ".htm");
 		$what = $bywhat = array();

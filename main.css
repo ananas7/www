@@ -43,11 +43,13 @@
 .my_name {
 	font-style: italic;
 	text-align: right;
-	width: 780px;
+	width: 760px;
 }
 .message {
-	/* background-color: #B0C4DE; */
-	/* color: #33527B; */
+	background-color: #B0C4DE;
+	color: #33527B; 
 	border-radius: 25px;
-	width: 780px;
+	width: 760px;
+	word-wrap: break-word;
+	padding: 5px;
 }
