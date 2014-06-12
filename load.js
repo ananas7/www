@@ -18,7 +18,8 @@ $(function () {
 			data:{number_div: count, hidden: $('#block').val()},
 			dataType: 'json',
 			success: function (result) {
-				if(result.length > 0) {
+				if(result && flag) {
+					flag=false;
 					$("#message_box").html(function (index, oldhtml) {
 						result.forEach(function (mes){
 							if(!map[mes.id]) {
@@ -36,23 +37,37 @@ $(function () {
 					});
 					count += result.length;
 					document.getElementById('message_box').scrollTop = 9999*count;
+					flag=true;
 				}
 			}
 		});
 	}
 	function add_message () {
-		if(map[count])
+		if(map[count]) { 
 			var mes = $('#mes').val();
-		$('#mes').val('');
+			$('#mes').val('');
+			count += 1;
+			map[count] = true;
+		}
 		$.ajax(
 		{
 			url: 'add_message.php',
 			type: 'POST',
-			data:{msgtext: mes, hidden: $('#block').val(),},
+			data:{msgtext: mes, hidden: $('#block').val()},
 			dataType: 'json',
-			success: function (result)
-			{	
-				
+			success: function (mes) {	
+				 console.log(mes);
+				$("#message_box").html(function (index, oldhtml) {
+					if(mes.name == $("#my_name").val()) {
+						oldhtml += '<div class="my_name">' + mes.name + '	' + mes.time + 
+						'</div><div style="text-align: right" class="message"><p>' + escapeHtml(mes.message) + '</p></div>';
+					} else {
+						oldhtml += '<div class="name">' + mes.name + '	' + mes.time + '</div><div class="message"><p>' 
+						+ escapeHtml(mes.message) + '</p></div>';
+					}
+					return oldhtml;
+				});
+				document.getElementById('message_box').scrollTop = 9999*count;
 			}
 		});
 	};
